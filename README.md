@@ -105,20 +105,114 @@ Amazon RDS (Multi-AZ)
 ---
 
 ## Deployment Steps
+### Step 1: Install Required Tools
 
-### 1. Clone the Repository
+Make sure the following tools are installed:
+
+- AWS CLI
+- Terraform
+- Git
+
+Check installation:
 ```bash
+aws --version
+terraform --version
+git --version
+
+Step 2: Configure AWS Credentials
+
+Login to AWS and configure credentials locally:
+
+aws configure
+Enter:
+
+AWS Access Key ID
+
+AWS Secret Access Key
+
+Default region (example: us-east-1)
+
+Output format: json
+
+Terraform uses these credentials to create AWS resources.
+Step 3: Clone the GitHub Repository
 git clone https://github.com/<your-username>/c3-assignment--terraform.git
 cd c3-assignment--terraform
 
-After all this integration , i then did
+Step 4: Verify Terraform Files Exist
 
-> terraform init ; to initialize terraform
-> terraform validate ; to validate the configuration
-> terraform plan ; to review the execution plan
-> terraform apply ; to deploy the infrastructure
+Confirm all Terraform files are present:
 
-Testing Fault Tolerance
+ls
+
+
+You should see files such as:
+
+providers.tf
+
+vpc.tf
+
+security-groups.tf
+
+asg-alb.tf
+
+rds.tf
+
+outputs.tf
+
+Step 5: Initialize Terraform
+
+This downloads the AWS provider and prepares Terraform:
+
+terraform init
+
+
+You should see:
+
+Terraform has been successfully initialized!
+
+Step 6: Validate Terraform Configuration
+
+Ensure there are no syntax errors:
+
+terraform validate
+
+
+Expected output:
+
+Success! The configuration is valid.
+
+Step 7: Review the Execution Plan
+
+See what resources Terraform will create:
+
+terraform plan
+
+
+No resources are created at this stage.
+
+Step 8: Deploy the Infrastructure
+
+Apply the Terraform configuration:
+
+terraform apply
+
+
+When prompted, type:
+
+yes
+
+Step 9: Verify Auto Scaling
+
+Go to AWS Console:
+
+EC2 → Auto Scaling Groups
+
+Confirm instances are Healthy
+
+Instances are running in multiple AZs
+
+step 10: Testing Fault Tolerance
 ~Web Tier Failover
 
 ~Terminate an EC2 instance from the Auto Scaling Group
