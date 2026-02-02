@@ -40,6 +40,9 @@ Amazon RDS (Multi-AZ)
 
 ---
 
+- I run this project using Ubuntu 24-04 linux system in Windows Powershell ; so initially i had to install terraform and awscli , and configure the aws that i wanted
+  to connect using "aws get-stscaller-identity" and then given the AMI and secret AM key ; configured with the aws account.
+  
 ## Terraform File Structure and Explanation
 
 ### `providers.tf`
